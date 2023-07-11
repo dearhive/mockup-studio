@@ -1,0 +1,330 @@
+
+.absolute-stretch{
+    position:relative;
+    height:100%;
+}
+
+a{
+    color: #eee;
+    outline: none;
+    text-decoration: none;
+}
+.content {
+    overflow: auto;
+}
+
+.df-no-scroll {
+    overflow: hidden;
+}
+
+.upper-fold {
+    background-color: #00a8a8;
+    background-color: #924B75;
+}
+html{
+    height:100%;
+}
+body{
+    margin:0;
+    box-sizing: border-box;
+    -webkit-transition: background 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
+    font-family: 'century gothic', 'Arial';
+}
+#home {
+    padding:0;
+    /* overflow: auto; */
+}
+
+div.df-book-stage {
+    background-color: #00a8a8;
+}
+
+section#features {}
+
+section#features {}
+
+.features img {
+    margin: 0 auto;
+    display: block;
+}
+
+.quick-hint {
+    right: 100px;
+    width: 200px;
+    /* display: block !important; */
+    position: absolute;
+    z-index: 200;
+    left: 0;
+}
+.menu{
+    text-align:center;
+    padding: 20px;
+    /* background-color: #eee; */
+    /* border-bottom: 1px solid rgba(221, 221, 221, 0.24); */
+    color: rgba(253, 253, 253, 0.99);
+    font-size: 20px;
+    font-weight: 100;
+    /* position: fixed; */
+    width: 100%;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    /* font-family: 'Georgia'; */
+    letter-spacing: 1px;
+}
+
+.select-book {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-size: 24px;
+    padding: 20px 40px;
+    /* padding-bottom: 20px; */
+}
+
+.select-book:after, .select-book:before {
+        content: " ";
+        bottom: 0px;
+        max-width: 460px;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.31);
+        display: block;
+        margin: 15px auto;
+        opacity: 0.5;
+}
+
+.select-book:before {
+    top: 0;
+    bottom: auto;
+}
+
+.clearfix:after {.group: after {
+    content: "";
+    display: table;
+    clear: both;  }
+    content: "";
+    display: table;
+    content: " ";
+    clear: both;
+}
+
+.df-book {
+    cursor: pointer;
+    background-color: #eee;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.22);
+    display: inline-block;
+    transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    box-sizing: border-box;
+    -webkit-transition:0.2s;
+    perspective: 1200px;
+    -moz-perspective: 1200px;
+    -webkit-perspective: 800px;
+    background-image: url("../images/loading.gif?");
+    bottom: 0;
+    background-size: 22px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+
+.df-books .df-book, .df-books .df-dummy {
+    width: 140px;
+    height: 200px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    margin: 20px 10px;
+    /* clear: left; */
+    vertical-align: top;
+}
+
+.df-books .df-dummy {
+}
+
+.df-book-cover {
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    transform-origin: left;
+    top: 0;
+    position: absolute;
+    overflow: hidden;
+    -webkit-transition: 0.3s;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.22);
+     */
+}
+
+.df-book .df-book-title {
+    bottom: -100%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 5px;
+    font-size: 12px;
+    background: rgba(1, 163, 163, 0.87);
+    background: rgba(146, 75, 117, 0.9);
+    box-sizing: border-box;
+    display: block;
+    color: white;
+    -webkit-transition: 0.4s;
+    opacity: 0;
+}
+
+.df-book .df-book-tag {
+    float: left;
+    padding: 1px 4px 20px;
+    background-color: rgba(0, 0, 0, 0.26);
+    text-transform: uppercase;
+    font-size: 10px;
+    margin: -15px 0 0 2px;
+    z-index: -1;
+    color: rgba(255, 255, 255, 0.71);
+    position: relative;
+}
+
+.df-book:hover .df-book-title {
+    opacity: 1;
+    bottom: 0;
+}
+
+.df-book:hover .df-book-title i {
+    /* font-size: 1em; */
+}
+
+.df-book:hover {
+    /* box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.40); */
+}
+
+.df-book:hover .df-book-cover {
+    -moz-transform: rotateY(-20deg);
+    -webkit-transform: rotateY(-20deg);
+    box-shadow: 3px 0px 12px rgba(0, 0, 0, 0.60);
+}
+
+.df-books {
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 20px 5px 150px;
+}
+
+.df-books-break {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 25px;
+    text-transform: uppercase;
+    /* text-shadow: 0px -1px 0px rgba(85, 85, 85, 0.31); */
+}
+
+.df-books-break:after {
+    content: " ";
+    bottom: 0px;
+    width: 50px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.24);
+    display: block;
+    margin: 10px auto;
+}
+.menu-item{padding:  2px 10px;display: inline-block;text-decoration: initial;font-size: 14px;font-weight: bold;/* letter-spacing: 0.5px; */text-transform: uppercase;color: #909090;}
+
+a.menu-item + .menu-item {
+    border-left: 1px solid #ccc;
+}
+
+a.menu-item:hover {
+    /* background-color: rgba(238, 238, 238, 0.19); */
+    color: #01A3A3;
+}
+
+@media (max-width: 620px){
+    .features img {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}
+}
+
+
+
+/* LOGO */
+
+.deip-logo.deip-blocks {
+    top: 5px;
+    padding: 0;
+    margin: 5px 0px;
+}
+
+.deip-logo {
+    float: left;
+    font-size: 20px;
+    cursor: pointer;
+    color: #FFF;
+    /* opacity: 0.8; */
+}
+
+.menu .buy-now {
+    box-sizing: border-box;
+    -webkit-transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in-out;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    /* font-weight: 600; */
+    line-height: 38px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.21);
+    height: 40px;
+    padding: 0 20px;
+    display: block;
+    float: right;
+    font-size: 14px;
+    color: white;
+    border: 1px solid;
+}
+
+a.buy-now:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #eee;
+    border-color: rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.21); */
+    /* font-weight: 600; */
+}
+
+a.deip-logo:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+.deip-blocks .deip-block {
+    /* display: inline-block; */
+    display: block;
+    float: left;
+    width: 1.5em;
+    margin: 0 -1px -1px 0;
+    padding: 0px 0 0 0;
+    height: 1.5em;
+    line-height: 1.5em;
+    /* font-size: 19px; */
+    text-align: center;
+    font-weight: 400;
+    position: relative;
+}
+
+.deip-block:after{
+    content:" ";
+    position:absolute;
+    width:100%;
+    box-sizing: border-box;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.deip-block:after{
+    border: 1px solid;
+}

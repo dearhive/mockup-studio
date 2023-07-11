@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta id="viewport" name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+
+    <title>3D Flipbook</title>
+    <meta name="description" content="3D Flipbook">
+    <meta name="keywords" content="3d, mockup, flipbook">
+
+    <meta name="robots" content="index,follow">
+    <link href="../css/book.css" rel="stylesheet">
+    <link href="../css/dflip.css" rel="stylesheet">
+
+    <link href="../css/ionicons.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="../images/icon_16.png">
+</head>
+<body class="absolute-stretch">
+<div class="content absolute-stretch">
+    <div class="upper-fold">
+
+        <header class="menu clearfix">
+            <a class="deip-logo deip-blocks" href="http://codecanyon.net/user/deip">
+                <span class="deip-block">D</span>
+                <span class="deip-block">E</span>
+                <span class="deip-block">I</span>
+                <span class="deip-block">P</span>
+            </a>
+            <a class="buy-now" href="http://codecanyon.net/item/dflip-3d-2d-flipbook-jquery-plugin-/15834127">BUY
+                NOW</a>
+            <!--
+                <a class="menu-item" href="?default"> 3D JPG-BOOK</a>
+                <a class="menu-item" href="?pdf"> 3D PDF-BOOK</a>
+                <a class="menu-item" href="?css"> Normal JPG-BOOK</a>
+                <a class="menu-item" href="?csspdf"> Normal PDF-BOOK</a>-->
+        </header>
+        <section class="select-book"> Select a book below to start with</section>
+        <section class="df-books">
+            <div class="df-books-break">Featured 3D</div>
+            <!--<div class="df-dummy dummy-featured" ></div>-->
+            <div class="df-book" df-source="books/foee_hbf_meatatlas_jan2014.pdf" id="df_meatAtlas"
+                 df-tags="3d,pdf,report" df-thumb="images/meat-atlas.jpg">Meat Atlas - <i>Heinrich Böll Foundation &
+                Friends of the Earth Europe - (CC BY-SA 3.0)</i></div>
+
+            <div class="df-book" df-source="books/dFlip Manual.pdf" id="df_dflip_pdf" df-tags="3d,pdf,Manual"
+                 df-thumb="images/dflip.jpg">dFlip Manual - PDF
+            </div>
+            <br>
+            <!--<div class="df-dummy dummy-magazines" ></div>-->
+            <div class="df-books-break">PDF Ebooks and Manuals</div>
+            <div class="df-book" df-source="books/the nightingale and the rose.pdf" id="df_nightingale"
+                 df-tags="3d,pdf,short-sweet" df-thumb="images/nightangle-and-rose.jpg">Nightingale And The Rose
+            </div>
+            <div class="df-book" df-source="books/the three musketeers.pdf" id="df_threeMusketeers"
+                 df-tags="3d,pdf,600 pages" df-thumb="images/398.jpg">The Three Musketeers
+            </div>
+            <div class="df-book" df-source="books/Romeo and Juliet.pdf"
+                 id="df_romeoAndJuliet" df-tags="3d,pdf,bookmark" df-thumb="images/2936.jpg">Romeo and
+                Juliet
+            </div>
+            <div class="df-book" df-source="books/Alice's Adventures in Wonderland.pdf" id="df_alice"
+                 df-tags="3d,pdf,bookmark" df-thumb="images/22.jpg">Alice's Adventures in Wonderland
+            </div>
+            <div class="df-book" df-source="" id="df_magazine_image" df-tags="3d,image,magazine"
+                 df-thumb="../data/book/RFF-Resources_191_web/0001.jpg">Resources Magazine- Winter 2016
+            </div>
+            <div class="df-books-break">CSS MODE: If Browser/You Don't Like 3D</div>
+            <div class="df-book" df-source="books/glfw.pdf" id="df_glfw_css_pdf" df-tags="css,pdf,fallback"
+                 df-thumb="images/glfw-manual.jpg">GLFW API Manual - PDF
+            </div>
+            <div class="df-book" df-source="" id="df_magazine_css_image" df-tags="css,image,magazine"
+                 df-thumb="../data/book/RFF-Resources_191_web/0001.jpg">Resources Magazine- Winter 2016
+            </div>
+
+        </section>
+    </div>
+    <!--
+    <section id="home" class="home absolute-stretch">
+        <div id="container" style="width: 100%;height: 100%">
+        </div>
+    </section>-->
+    <div class="features">
+        <img src="../images/features-flipbook.jpg">
+    </div>
+</div>
+<script src="../js/libs/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="../js/dflip/dflip.min.js"></script>
+<!--<script src="../js/dflip/dflip.js"></script>-->
+<script src="../js/libs/pdf.min.js"></script>
+<script src="../js/libs/pdf.worker.min.js"></script>
+<script src="../js/libs/three.min.js"></script>
+<script src="../js/libs/mockup.min.js"></script>
+<!--<script src="../js/libs/mockup.js"></script>-->
+<script>
+
+var flipBook, undef = void 0;
+var images = [];
+for (var imgCount = 0; imgCount < 31; imgCount++) {
+    images[imgCount] = "../data/book/RFF-Resources_191_web/" + ('0000' + (imgCount + 1)).slice(-4) + ".jpg";
+}
+
+var
+        option_magazine_image = {source: images},
+
+        option_glfw_css_pdf = {
+            webgl: false,
+            outline: [
+                {
+                    title: "Page 3", dest: 3, items: [
+                    {title: "Page 3.1", dest: 6}
+                ]
+                },
+                {title: "Page 44", dest: 44, items: []},
+                {title: "Page 67", dest: 67, items: []},
+                {title: "Page 23", dest: 23, items: []}
+            ]
+        },
+        option_magazine_css_image = {
+            webgl: false, source: images, links: [],
+            outline: [
+                {title: "Imprint", dest: 2},
+                {title: "TABLE OF CONTENTS", dest: 4, items: []},
+                {title: "Introduction", dest: 6},
+                {title: "LESSONS TO LEARN", dest: 8},
+                {title: "THE RISE OF THE GLOBAL MARKET", dest: 10},
+                {title: "CONCENTRATION: ECONOMIES OF SCALE BUT LESS DIVERSITY", dest: 12},
+                {title: "MAKING PRODUCTS FROM ANIMALS: THE SLAUGHTER INDUSTRY", dest: 14},
+                {title: "BRIGHT PINK IN THE COLD CABINET", dest: 16},
+                {title: "FREE TRADE VERSUS SAFE FOOD", dest: 18},
+                {title: "THE HIDDEN COSTS OF STEAK", dest: 20},
+                {title: "WHY FARMS KILL FISH: BIODIVERSITY LOSS ON LAND AND IN WATER", dest: 22},
+                {title: "A SPECIES-POOR PLANET", dest: 24},
+                {title: "ANTIBIOTICS: BREEDING SUPERBUGS", dest: 26},
+                {title: "WHEN THE TANK IS RUNNING DRY", dest: 28},
+                {title: "THE GRAIN IN THE FEED TROUGH", dest: 30},
+                {title: "THE EMERGENCE OF A LATIN AMERICAN SOY EMPIRE", dest: 32},
+                {title: "THE CLIMATE COST OF CATTLE", dest: 34}
+            ]
+        },
+
+        option_meatAtlas = {
+            webgl: true,
+            hard: "cover",
+            outline: [
+                {title: "Imprint", dest: 2},
+                {
+                    title: "TABLE OF CONTENTS", dest: 4, items: []
+                },
+                {title: "Introduction", dest: 6},
+                {title: "LESSONS TO LEARN", dest: 8},
+                {title: "THE RISE OF THE GLOBAL MARKET", dest: 10},
+                {title: "CONCENTRATION: ECONOMIES OF SCALE BUT LESS DIVERSITY", dest: 12},
+                {title: "MAKING PRODUCTS FROM ANIMALS: THE SLAUGHTER INDUSTRY", dest: 14},
+                {title: "BRIGHT PINK IN THE COLD CABINET", dest: 16},
+                {title: "FREE TRADE VERSUS SAFE FOOD", dest: 18},
+                {title: "THE HIDDEN COSTS OF STEAK", dest: 20},
+                {title: "WHY FARMS KILL FISH: BIODIVERSITY LOSS ON LAND AND IN WATER", dest: 22},
+                {title: "A SPECIES-POOR PLANET", dest: 24},
+                {title: "ANTIBIOTICS: BREEDING SUPERBUGS", dest: 26},
+                {title: "WHEN THE TANK IS RUNNING DRY", dest: 28},
+                {title: "THE GRAIN IN THE FEED TROUGH", dest: 30},
+                {title: "THE EMERGENCE OF A LATIN AMERICAN SOY EMPIRE", dest: 32},
+                {title: "THE CLIMATE COST OF CATTLE", dest: 34}
+            ], links: []
+        };
+
+option_magazine_css_image.links[1] = [1100, 1600,
+    [415, 800, 610, 165, 16]
+];
+option_magazine_css_image.links[2] = [1100, 1600,
+    [415, 800, 610, 165, "http://google.com.np"]
+];
+
+option_meatAtlas.links[4] = [724, 1024,
+    [160, 105, 250, 30, 2],
+    [160, 135, 250, 30, 6],
+    [160, 165, 250, 30, 8],
+    [160, 195, 250, 125, 10],
+    [160, 320, 250, 150, 12],
+    [160, 470, 250, 145, 14],
+    [160, 615, 250, 105, 16],
+    [160, 720, 250, 130, 18],
+    [160, 850, 250, 120, 20],
+
+    [420, 105, 250, 130, 22],
+    [420, 235, 250, 130, 24],
+    [420, 365, 250, 135, 26],
+    [420, 500, 250, 130, 28],
+    [420, 630, 250, 100, 30],
+    [420, 730, 250, 130, 32],
+    [420, 860, 250, 110, 34]
+];
+/*option_meatAtlas.links[5] = [724, 1024,
+    [45, 50, 245, 95, 36],
+    [50, 150, 250, 140, 38],
+    [35, 295, 265, 135, 40],
+    [45, 445, 255, 135, 42],
+    [45, 565, 265, 110, 44],
+    [45, 676, 255, 145, 46],
+    [50, 820, 245, 150, 48],
+    [305, 45, 260, 145, 50],
+    [310, 195, 265, 130, 52],
+    [305, 325, 265, 100, 54],
+    [310, 430, 245, 155, 56],
+    [310, 590, 245, 130, 58],
+    [310, 725, 255, 140, 60],
+    [310, 865, 190, 35, 62],
+    [305, 915, 120, 25, 64],
+    [305, 940, 110, 30, 66]
+];*/
+
+
+if (window.location.href.indexOf("deipgroup.com") >= 0) {
+    // Standard Google Universal Analytics code
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga'); // Note: https protocol here
+
+    ga('create', 'UA-40859319-5', 'auto');
+    ga('set', 'checkProtocolTask', function () {
+    }); // Removes failing protocol check. @see: http://stackoverflow.com/a/22152353/1958200
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview', '/book.html');
+}
+
+$(document).ready(function () {
+
+    var base_options = {
+        duration: 500,
+        shininess: 5,
+        backgroundColor: "#00a8a8"
+    };
+
+    if (typeof PRESENTATION !== 'undefined') {
+
+        PRESENTATION.defaults.backgroundImage = "blank";//images/textures/white.jpg";
+        PRESENTATION.defaults.textureLoadFallback = "../images/textures/white.jpg";
+        PRESENTATION.defaults.mockupjsSrc = "../js/libs/mockup.min.js";
+        PRESENTATION.defaults.pdfjsSrc = "../js/libs/pdf.js";
+        PRESENTATION.defaults.threejsSrc = "../js/libs/three.min.js";
+        PRESENTATION.defaults.pdfjsWorkerSrc = "../js/libs/pdf.worker.min.js";
+
+    }
+
+    var books = $(".df-books .df-book");
+
+    books.each(function () {
+        var book = $(this);
+
+        var wrapper = $("<div class='df-book-cover'>");
+
+        //fetch any existing values
+        var thumb = book.attr("df-thumb");
+
+        var text = book.html();
+        book.html("");
+        var title = $("<span class='df-book-title'>").html(text).appendTo(wrapper);
+
+        var tags = book.attr("df-tags");
+        if (tags) tags = tags.split(",");
+
+        if (tags.length > 0) {
+            for (var tagcount = 0; tagcount < tags.length; tagcount++) {
+                book.append("<span class='df-book-tag'>" + tags[tagcount] + "</span>");
+            }
+        }
+        wrapper.css({
+            backgroundImage: "url(" + thumb + ")"
+        });
+        book.append(wrapper);
+
+    });
+    books.on("click", function () {
+
+        //cache the book element
+        var book = $(this);
+
+        //fetch any existing values
+        var options = "option_" + book.attr("id").replace("df_", ""),
+                source = book.attr("df-source");
+
+        if (window.ga)
+            window.ga('send', 'event', "Flipbook", "LightBox", options);
+
+        if (!window.bookLightBox) {
+            window.bookLightBox = new DFLightBox(function () {
+
+//                    $("body").removeClass("df-no-scroll");
+                window.dfActiveLightBoxBook.dispose();
+                window.dfActiveLightBoxBook = null;
+            });
+        }
+
+
+        window.bookLightBox.duration = 500;
+        //verify and optimize the values
+        options = options == undef || options == "" || window[options] == undef ? {} : window[options];
+
+        options.source = source == undef || source == "" ? options.source : source;
+
+        options.links = parseLinks(options.links);
+        if (window.dfActiveLightBoxBook && window.dfActiveLightBoxBook.dispose) {
+            window.dfActiveLightBoxBook.dispose();
+
+        } else {
+            options = $.extend({}, base_options, options);
+            window.bookLightBox.show(
+                    function () {
+//                            $("body").addClass("df-no-scroll");
+                        window.dfActiveLightBoxBook = $(window.bookLightBox.container).flipBook(options.source, options);
+                    }
+            );
+        }
+
+
+    });
+
+
+    /*
+
+     var source, options = {
+     height: 500,
+     duration: 500,
+     shininess:5,
+     backgroundColor:"#00a8a8"
+     }, undef = void 0;
+
+     // Fragment exists
+     var queryString = window.location.href.split('?')[1] || "default";
+     queryString = queryString.toLowerCase();
+
+     if (queryString.indexOf("pdf") > -1) {
+     //            source = "data/book/user_guide2_draft.pdf";
+     //            source = "data/book/aiwo.pdf";
+     //            source = "../data/book/helloworld.pdf";
+     //            source = "data/book/RFF-Resources_191_web.pdf";
+     //
+     //            source = "../data/book/Vogue_USA_-_November_2015-P2P.pdf";
+     //            source = "data/book/book copy.pdf";
+     //            source = "../data/book/VogueUSASeptember2015.pdf";
+     source = "../data/book/doc.pdf";
+     //            source = "../data/book/National_Geographic_History_2016-03_04.pdf";
+     //            source = "data/book/CASTEU copy-low res.pdf";
+     //            source = "data/book/BusinessPixel Brochure copy3.pdf";
+     //            source = "../data/book/gimp.pdf";
+
+     } else {
+     var images = [];
+     for (var imgCount = 0; imgCount < 31; imgCount++) {
+     images[imgCount] = "../data/book/RFF-Resources_191_web/" + ('0000' + (imgCount + 1)).slice(-4) + ".jpg";
+     }
+     source = images;
+     }
+     options.webgl =
+     queryString.indexOf("css") > -1 ? false
+     : queryString.indexOf("3d") > -1 ? true
+     : true;
+
+
+
+     flipBook = $("#container").flipBook(source, options);
+
+     if(window.ga)
+     window.ga('send', 'event', "Flipbook", "Load", queryString);
+
+     $(window).on("resize",function(){
+     flipBook.height($(window).height()-flipBook.container.position().top);
+     });
+     //        flipBook = $("#container").triFold(source, {webgl: true,stiffness:0.15});
+     */
+
+});
+</script>
+</body>
+</html>
+

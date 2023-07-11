@@ -1,0 +1,16 @@
+section#introduction ul {
+    background-color: #f7f7f7;
+    border-left: 2px solid #ddd;
+    margin: 20px 0;
+    padding: 20px 30px;
+}
+.category-list-content-item:before {
+    background: none;
+]}
+.category-list-content {
+    margin: 20px 0;
+    background-color: #f7f7f7;
+    border-left: 2px solid #ddd;
+    list-style: disc;
+}
+.background{background:url(../img/backgrounds/6.jpg)}
